@@ -6,10 +6,11 @@
             [(nzCollapsed)]="isCollapsed"
             [nzTrigger]="null">
     <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
-        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>Ant Design Of Angular</h1>
+      <a routerLink="/welcome">
+        <img src="https://www.logo.wine/a/logo/Google_Storage/Google_Storage-Logo.wine.svg" alt="logo">
+        <span>Cloud Storage </span>
       </a>
+
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
       <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
@@ -18,7 +19,7 @@
             <a routerLink="/welcome">Welcome</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Monitor</a>
+            <a routerLink="/my-drive">My drive</a>
           </li>
           <li nz-menu-item nzMatchRouter>
             <a>Workplace</a>
