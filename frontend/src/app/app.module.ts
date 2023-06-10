@@ -14,7 +14,7 @@ import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
+import { reducers, metaReducers } from './core/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {NzNotificationService} from "ng-zorro-antd/notification";
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {NzNotificationService} from "ng-zorro-antd/notification";
-import {messageType} from "../../core/types";
-import {messageOptions as options} from "../../core/message-options";
+import {MessageService} from "../../core/messages/message.service";
+import {Message} from "../../core/messages/message-options";
+import {EXAMPLE_TEST_ERROR, EXAMPLE_TEST_SUCCESS} from "../../core/messages/message.list";
 
 @Component({
   selector: 'app-welcome',
@@ -10,10 +10,11 @@ import {messageOptions as options} from "../../core/message-options";
 })
 export class WelcomeComponent {
 
-  constructor(private notification: NzNotificationService) { }
+  protected readonly EXAMPLE_TEST_SUCCESS = EXAMPLE_TEST_SUCCESS;
+  protected readonly EXAMPLE_TEST_ERROR = EXAMPLE_TEST_ERROR;
+  constructor(private messageService: MessageService) { }
 
-  add(title: string, type: messageType ="info", content = ""): void {
-    this.notification.create( type, title, content, options);
+  add(message: Message): void {
+    this.messageService.create(message);
   }
-
 }
