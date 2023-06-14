@@ -78,6 +78,7 @@ nz-content {
   background: #fff;
   height: 100%;
   border-radius: 20px;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=app.component.css.map */

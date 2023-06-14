@@ -1,1 +1,26 @@
 <p>my-drive works!</p>
+
+
+  <div>
+    <cdk-virtual-scroll-viewport itemSize="73" style="height: 75vh" >
+      <nz-list nzGrid>
+        <div nz-row [nzGutter]="21" style="display:flex; justify-content: center">
+          <div nz-col *ngFor="let item of cardCount">
+            <nz-list-item>
+              <nz-card appMyDriveCard [nzTitle]="item+''"
+                       style="width: 200px; height: 200px;"
+                       (contextmenu)="openModal($event, menu)">Card content</nz-card>
+            </nz-list-item>
+          </div>
+        </div>
+      </nz-list>
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+<nz-dropdown-menu #menu="nzDropdownMenu" >
+  <ul nz-menu style="width: 200px;">
+    <li nz-menu-item>1st menu item</li>
+    <li nz-menu-item>2nd menu item</li>
+    <li nz-menu-item>3rd menu item</li>
+  </ul>
+</nz-dropdown-menu>
