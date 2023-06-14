@@ -1,8 +1,12 @@
-interface FileCardMenuItem {
+type FileCardMenuItem = {
   title: string;
-  click?: any;
-  children?: FileCardMenuItem[]
-}
+  click: any;
+  children?: never;
+} | {
+  title: string;
+  click?: never;
+  children: FileCardMenuItem[];
+};
 
 export const fileCardContextMenuConfig: Array<FileCardMenuItem> = [
   {title: "1st item", click: ()=>console.log("1 clicked")},

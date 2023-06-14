@@ -1,37 +1,27 @@
-<nz-card appMyDriveCard [nzTitle]="title"
+<nz-card appMyDriveCard [nzTitle]="title" [nzCover]="coverTemplate"
          style="width: 200px; height: 200px;"
-         (contextmenu)="openModal($event, menu)">Card content</nz-card>
+         (contextmenu)="openModal($event, contextmenu)"></nz-card>
 
+<ng-template #coverTemplate>
+  <div style="height: 138px;
+    display: flex;
+    align-items: center;
+    justify-content: center;">
+    <img style="object-fit: scale-down;height: 100px;" alt="{{Images.doc.alt}}" src="{{Images.doc.src}}" />
+  </div>
+</ng-template>
 
-<!--<nz-dropdown-menu #menu="nzDropdownMenu" >-->
-<!--  &lt;!&ndash;Context-menu&ndash;&gt;-->
-<!--  <ul nz-menu style="width: 200px;">-->
-<!--    <ng-container *ngFor="let item of fileCardContextMenuConfig">-->
-<!--      <li nz-menu-item *ngIf="!item.children; else submenu" (click)="item.click()">{{item.title}}</li>-->
-<!--      <ng-template #submenu>-->
-<!--        <li nz-submenu nzTitle="{{item.title}}">-->
-<!--          <ul>-->
-<!--            <ng-container *ngFor="let node of item.children">-->
-<!--              <li nz-menu-item (click)="node.click()">{{node.title}}</li>-->
-<!--            </ng-container>-->
-<!--          </ul>-->
-<!--        </li>-->
-<!--      </ng-template>-->
-<!--    </ng-container>-->
-<!--  </ul>-->
-<!--</nz-dropdown-menu>-->
-
-<nz-dropdown-menu #menu="nzDropdownMenu" >
+<nz-dropdown-menu #contextmenu="nzDropdownMenu" >
   <!--  My-drive-menu-->
   <ul nz-menu style="width: 200px;">
-    <ng-container *ngTemplateOutlet="nodeTemplate; context: {$implicit: this, node: fileCardContextMenuConfig}"></ng-container>
+    <ng-container *ngTemplateOutlet="nodeTemplate; context: {node: fileCardContextMenuConfig}"></ng-container>
     <ng-template #nodeTemplate let-node="node">
       <ng-container *ngFor="let item of node">
         <li nz-menu-item *ngIf="!item.children; else submenu" (click)="item.click()">{{item.title}}</li>
         <ng-template #submenu>
           <li nz-submenu nzTitle="{{item.title}}">
             <ul>
-              <ng-container *ngTemplateOutlet="nodeTemplate; context: {$implicit: this, node: item.children}"></ng-container>
+              <ng-container *ngTemplateOutlet="nodeTemplate; context: {node: item.children}"></ng-container>
             </ul>
           </li>
         </ng-template>

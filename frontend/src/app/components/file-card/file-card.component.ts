@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {NzContextMenuService, NzDropdownMenuComponent} from "ng-zorro-antd/dropdown";
 import {fileCardContextMenuConfig} from "../../core/definitions/file-card-dropdown.config";
+import {Images} from "../../core/images/images";
 
 @Component({
   selector: 'app-file-card',
@@ -19,4 +20,5 @@ export class FileCardComponent {
   }
 
   protected readonly fileCardContextMenuConfig = fileCardContextMenuConfig;
+  protected readonly Images = Images;
 }
