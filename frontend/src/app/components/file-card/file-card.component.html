@@ -3,54 +3,41 @@
          (contextmenu)="openModal($event, menu)">Card content</nz-card>
 
 
-<nz-dropdown-menu #menu="nzDropdownMenu" >
-  <!--  My-drive-menu-->
-  <ul nz-menu style="width: 200px;">
-    <ng-container *ngFor="let item of fileCardContextMenuConfig">
-      <li nz-menu-item *ngIf="!item.children; else submenu" (click)="item.click()">{{item.title}}</li>
-      <ng-template #submenu>
-        <li nz-submenu nzTitle="{{item.title}}">
-          <ul>
-            <ng-container *ngFor="let node of item.children">
-              <li nz-menu-item (click)="node.click()">{{node.title}}</li>
-            </ng-container>
-          </ul>
-        </li>
-      </ng-template>
-    </ng-container>
-  </ul>
-</nz-dropdown-menu>
-
-<!--<ng-template #nodeTemplate let-node="node">-->
-<!--  <ng-container *ngFor="let item of node">-->
-<!--    <li nz-menu-item *ngIf="!item.children; else submenu" (click)="item.click()">{{item.title}}</li>-->
-<!--    <ng-template #submenu>-->
-<!--      <li nz-submenu nzTitle="{{item.title}}">-->
-<!--        <ul>-->
-<!--          <ng-container *ngTemplateOutlet="nodeTemplate; context: {node: item.children}"></ng-container>-->
-<!--        </ul>-->
-<!--      </li>-->
-<!--    </ng-template>-->
-<!--  </ng-container>-->
-<!--</ng-template>-->
-
-
 <!--<nz-dropdown-menu #menu="nzDropdownMenu" >-->
-<!--  &lt;!&ndash;  My-drive-menu&ndash;&gt;-->
+<!--  &lt;!&ndash;Context-menu&ndash;&gt;-->
 <!--  <ul nz-menu style="width: 200px;">-->
-<!--    <ng-container *ngTemplateOutlet="nodeTemplate; context: {node: fileCardContextMenuConfig}"></ng-container>-->
+<!--    <ng-container *ngFor="let item of fileCardContextMenuConfig">-->
+<!--      <li nz-menu-item *ngIf="!item.children; else submenu" (click)="item.click()">{{item.title}}</li>-->
+<!--      <ng-template #submenu>-->
+<!--        <li nz-submenu nzTitle="{{item.title}}">-->
+<!--          <ul>-->
+<!--            <ng-container *ngFor="let node of item.children">-->
+<!--              <li nz-menu-item (click)="node.click()">{{node.title}}</li>-->
+<!--            </ng-container>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--      </ng-template>-->
+<!--    </ng-container>-->
 <!--  </ul>-->
 <!--</nz-dropdown-menu>-->
 
-<!--<ng-template #nodeTemplate let-node="node">-->
-<!--  <ng-container *ngFor="let item of node">-->
-<!--    <li nz-menu-item *ngIf="!item.children; else submenu" (click)="item.click()">{{item.title}}</li>-->
-<!--    <ng-template #submenu>-->
-<!--      <li nz-submenu nzTitle="{{item.title}}">-->
-<!--        <ul>-->
-<!--          <ng-container *ngTemplateOutlet="nodeTemplate; context: {node: item.children}"></ng-container>-->
-<!--        </ul>-->
-<!--      </li>-->
-<!--    </ng-template>-->
-<!--  </ng-container>-->
-<!--</ng-template>-->
+<nz-dropdown-menu #menu="nzDropdownMenu" >
+  <!--  My-drive-menu-->
+  <ul nz-menu style="width: 200px;">
+    <ng-container *ngTemplateOutlet="nodeTemplate; context: {$implicit: this, node: fileCardContextMenuConfig}"></ng-container>
+    <ng-template #nodeTemplate let-node="node">
+      <ng-container *ngFor="let item of node">
+        <li nz-menu-item *ngIf="!item.children; else submenu" (click)="item.click()">{{item.title}}</li>
+        <ng-template #submenu>
+          <li nz-submenu nzTitle="{{item.title}}">
+            <ul>
+              <ng-container *ngTemplateOutlet="nodeTemplate; context: {$implicit: this, node: item.children}"></ng-container>
+            </ul>
+          </li>
+        </ng-template>
+      </ng-container>
+    </ng-template>
+  </ul>
+</nz-dropdown-menu>
+
+
