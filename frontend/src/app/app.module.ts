@@ -16,12 +16,14 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './core/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {NzNotificationService} from "ng-zorro-antd/notification";
+import {NzCardModule} from "ng-zorro-antd/card";
+import {MyDriveModule} from "./pages/my-drive/my-drive.module";
 
 registerLocaleData(ru);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,10 +37,12 @@ registerLocaleData(ru);
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
+    NzCardModule,
+    MyDriveModule
   ],
   providers: [
-    { provide: NZ_I18N, useValue: ru_RU },
+    {provide: NZ_I18N, useValue: ru_RU},
     NzNotificationService
   ],
   bootstrap: [AppComponent]

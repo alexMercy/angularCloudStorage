@@ -1,5 +1,4 @@
 import {Component, HostListener} from '@angular/core';
-import {NzContextMenuService} from "ng-zorro-antd/dropdown";
 
 @Component({
   selector: 'app-my-drive',
@@ -10,7 +9,7 @@ export class MyDriveComponent {
 
   cardCount = Array.from({length: 115}).map((v,i) => i);
 
-  constructor(private contextMenu: NzContextMenuService) {
+  constructor() {
   }
 
   @HostListener('contextmenu', ['$event'])
@@ -20,8 +19,6 @@ export class MyDriveComponent {
     console.log(this.cardCount);
   }
 
-  openModal(event: MouseEvent, menu: any) {
-    this.contextMenu.create(event,menu)
-  }
+
 
 }
